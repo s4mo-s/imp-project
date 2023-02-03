@@ -39,8 +39,7 @@ inline int MIN(int a, int b) { return a > b ? b : a; }
 static const char *TAG = "HTTPS";
 
 /* TOGGLE MODE/SPEED */
-void set_options(led_options_t* options, int mode, int speed)
-{
+void set_options(led_options_t* options, int mode, int speed) {
 	switch (mode){
 		case 1:
 			options->led1 = 1;
@@ -123,8 +122,7 @@ void blink_task() {
 }
 
 /* WIFI INIT */
-void wifi_init(void)
-{
+void wifi_init(void) {
 	ESP_ERROR_CHECK(esp_netif_init());
 	ESP_ERROR_CHECK(esp_event_loop_create_default());
 	esp_netif_create_default_wifi_ap();
@@ -148,13 +146,13 @@ void wifi_init(void)
 
 
 /* REQUEST HANDLERS */
-static esp_err_t get_handler(httpd_req_t *req){
+static esp_err_t get_handler(httpd_req_t *req) {
 	const char *response = req->user_ctx;
 	httpd_resp_send(req, response, strlen(response));
 	return ESP_OK;
 }
 
-esp_err_t post_handler(httpd_req_t *req){
+esp_err_t post_handler(httpd_req_t *req) {
 	char content[100];
 	size_t recv_size = MIN(req->content_len, sizeof(content));
 	int ret = httpd_req_recv(req, content, recv_size);
@@ -182,7 +180,7 @@ esp_err_t post_handler(httpd_req_t *req){
 
 
 /* WEB SERVER */
-static httpd_handle_t start_webserver(void){
+static httpd_handle_t start_webserver(void) {
 	httpd_handle_t server = NULL;
     	httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     	config.uri_match_fn = httpd_uri_match_wildcard;
@@ -338,8 +336,7 @@ void queue_init() {
 }
 
 /* MAIN */
-void app_main(void)
-{
+void app_main(void) {
     gpio_pad_select_gpio(GPIO_LED1);
     gpio_pad_select_gpio(GPIO_LED2);
     gpio_pad_select_gpio(GPIO_LED3);
