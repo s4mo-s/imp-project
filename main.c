@@ -8,13 +8,13 @@
 #include "esp_log.h"
 #include "esp_http_server.h"
 
-#define GPIO_LED_RED	    2
-#define GPIO_LED1			13
-#define GPIO_LED2			12
-#define GPIO_LED3			14
-#define GPIO_RED			27
-#define GPIO_GREEN		    17
-#define GPIO_BLUE			16
+#define GPIO_LED_RED		2
+#define GPIO_LED1		13
+#define GPIO_LED2		12
+#define GPIO_LED3		14
+#define GPIO_RED		27
+#define GPIO_GREEN		17
+#define GPIO_BLUE		16
 
 QueueHandle_t queue = NULL;
 
